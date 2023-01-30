@@ -10,12 +10,12 @@ Maths::~Maths()
 {
 }
 
-u64 Maths::factorial(u8 number)
+double Maths::factorial(u16 number)
 {
-    return (number <= 1) ? 1 : number * factorial(number - 1);
+    return static_cast<double>((number <= 1) ? 1 : number * factorial(number - 1));
 }
 
-double Maths::power(double number, u8 exp)
+double Maths::power(double number, u16 exp)
 {
     double power{number};
 
@@ -28,7 +28,7 @@ double Maths::power(double number, u8 exp)
         return 0;
     }
     
-    for (uint8_t i = 1; i < exp; i++)
+    for (u8 i = 1; i < exp; i++)
     {
         power = power * number;
     }
@@ -40,9 +40,19 @@ double Maths::sinus(double x, u8 precision)
 {
     double result{0.0};
 
-    for (u8 n = 0; n < precision; n++)
+    for (u16 n = 0; n < precision; n++)
     {
-        result = result + (power(-1, n) * (power(x, 2*n + 1) / static_cast<double>(factorial(2 * n + 1))));
+        result = result + (((n & 0x01) ? -1 : 1) * power(toRadians(x), static_cast<u16>((2 * n) + 1))) / factorial(static_cast<u16>((2 * n) + 1));    
     }
     return result;
+}
+
+double Maths::toRadians(double x)
+{
+    return (PI / 180.0) * x;    
+}
+
+double Maths::toDegrees(double radians)
+{
+    return radians * (180.0 / PI);
 }

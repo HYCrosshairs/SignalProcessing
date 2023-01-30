@@ -4,7 +4,7 @@
 #include "GNUPlot.hpp"
 #include "Maths.hpp"
 
-constexpr uint32_t NPOINTS = 2 * 4 * 50; // length of array
+constexpr uint32_t NPOINTS = 360; // length of array
 
 void wait_for_key(); // Programm halts until keypress
 
@@ -19,19 +19,17 @@ int main()
 
     Maths maths;
 
-    std::cout << maths.factorial(5) << std::endl;
+    std::cout << maths.toRadians(maths.sinus(PI / 2)) << std::endl;
 
-    std::cout << maths.power(5.0, 2) << std::endl;
-    std::cout << maths.power(-5.0, 2) << std::endl;
-    std::cout << maths.power(5.0, 3) << std::endl;
-    std::cout << maths.power(-5.0, 3) << std::endl;
 
-    std::cout << maths.sinus(3) << std::endl;
+
+    //std::cout << maths.sinus(3) << std::endl;
 
     for (unsigned int i = 0; i < NPOINTS; i++)  // fill double arrays x, y, z
     {
-        x.push_back((double)i);             // x[i] = i
-        y.push_back((double)cos(i)); // y[i] = i^2
+        cout << "sinus(" << i << ") : " << maths.sinus(i) << " | " << sin(i) << endl; 
+        x.push_back(i);             // x[i] = i
+        y.push_back((double)maths.sinus(i)); // y[i] = i^2
         z.push_back( x[i]*y[i] );           // z[i] = x[i]*y[i] = i^3
     }
 
@@ -39,11 +37,11 @@ int main()
     {
         Gnuplot plot;
 
-        plot.set_grid().set_samples(1000).set_xrange(0,1000);
-        plot.set_smooth("bezier").plot_x(y,"bezier");
+        plot.set_grid().set_samples(1000).set_xrange(0,360);
+        plot.set_smooth("csplines").plot_x(y,"csplines");
         plot.unset_smooth();
 
-        //wait_for_key();
+        wait_for_key();
     }
     catch (GNUPlotException &ge)
     {
