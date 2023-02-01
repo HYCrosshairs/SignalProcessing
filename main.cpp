@@ -11,7 +11,7 @@ void wait_for_key(); // Programm halts until keypress
 using std::cout;
 using std::endl;
 
-using namespace signal::maths;
+using namespace maths;
 
 int main()
 {

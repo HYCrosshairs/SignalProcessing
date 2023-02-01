@@ -10,13 +10,13 @@ enum class NoiseType : int
 
 };
 
-class NoiseGenerator
+class Noise
 {
 private:
     /* data */
 public:
-    NoiseGenerator(/* args */);
-    ~NoiseGenerator();
+    Noise(/* args */);
+    ~Noise();
 };
     
 } // namespace maths::random::noise
