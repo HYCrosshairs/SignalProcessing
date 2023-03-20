@@ -19,7 +19,7 @@ int main()
 
     Maths maths;
 
-    std::cout << maths.toRadians(maths.sinus(PI / 2)) << std::endl;
+    //std::cout << maths.toRadians(maths.sinus(PI / 2)) << std::endl;
 
 
 
@@ -27,9 +27,9 @@ int main()
 
     for (unsigned int i = 0; i < NPOINTS; i++)  // fill double arrays x, y, z
     {
-        cout << "sinus(" << i << ") : " << maths.sinus(i) << " | " << sin(i) << endl; 
+        cout << "sinus(" << i << ") : " << maths.sinus([i]() -> double {return (PI / 180.0) * i; }) << " | " << sin(i) << endl; 
         x.push_back(i);             // x[i] = i
-        y.push_back((double)maths.sinus(i)); // y[i] = i^2
+        y.push_back((double)maths.sinus([i]() -> double { return (PI / 180.0) * i; })); // y[i] = i^2
         z.push_back( x[i]*y[i] );           // z[i] = x[i]*y[i] = i^3
     }
 

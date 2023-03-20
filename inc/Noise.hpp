@@ -7,16 +7,21 @@ namespace maths::random::noise
 
 enum class NoiseType : int
 {
-
+    GAUSSIAN,
+    WHITE,
+    PINK,
+    BROWN
 };
 
 class Noise
 {
+public:
+    Noise();
+    ~Noise();
+
+    virtual void noiseGenerator() = 0;
 private:
     /* data */
-public:
-    Noise(/* args */);
-    ~Noise();
 };
     
 } // namespace maths::random::noise

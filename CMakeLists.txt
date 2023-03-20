@@ -11,9 +11,14 @@ add_compile_options(-Wall -Wextra -Wconversion -pedantic -Wformat-security -Wfat
 include_directories(inc)
 
 set(SOURCES
+    src/Aperiodic.cpp
+    src/Periodic.cpp
+    src/Filter.cpp
     src/GNUPlot.cpp
-    src/DetSignal.cpp
     src/Maths.cpp
+    src/Noise.cpp
+    src/Sine.cpp
+    src/Trigonometry.cpp
     main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${RESOURCES})

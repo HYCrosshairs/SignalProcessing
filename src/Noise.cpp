@@ -1,11 +1,11 @@
-#include "NoiseGenerator.hpp"
+#include "Noise.hpp"
 
 using namespace maths::random::noise;
 
-NoiseGenerator::NoiseGenerator(/* args */)
+Noise::Noise()
 {
 }
 
-NoiseGenerator::~NoiseGenerator()
+Noise::~Noise()
 {
 }

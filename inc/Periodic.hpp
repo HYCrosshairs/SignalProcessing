@@ -4,10 +4,12 @@ namespace signal
 {
 class Periodic
 {
-private:
-    /* data */
 public:
     Periodic(/* args */);
-    ~Periodic();
+    ~Periodic() = default;
+private:
+    double frequency;
+    double amplitude;
+    double phase;
 };   
 } // namespace signal
